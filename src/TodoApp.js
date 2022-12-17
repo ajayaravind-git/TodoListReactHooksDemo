@@ -7,12 +7,17 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import TodoList from "./TodoList"
+import TodoForm from "./TodoForm"
 
 function TodoApp() {
     const initialTodos = [{ id: 1, task: "wash clothes", completed: false }, {
         id: 2, task: "walk dog", completed: false
     }]
     const [todos, setTodos] = useState(initialTodos);
+    const addTodos = (newTodoText) => {
+        setTodos([...todos, { id: 4, task: newTodoText, completed: false }])
+
+    }
     return (<div>
         <Paper style={{
             padding: 0,
@@ -25,6 +30,7 @@ function TodoApp() {
                     <Typography color="inherit">Todos with hooks</Typography>
                 </Toolbar>
             </AppBar>
+            <TodoForm addTodos={addTodos} />
             <TodoList todos={todos} />
 
         </Paper>
