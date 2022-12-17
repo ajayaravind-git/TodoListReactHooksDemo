@@ -10,8 +10,8 @@ import TodoList from "./TodoList"
 import TodoForm from "./TodoForm"
 
 function TodoApp() {
-    const initialTodos = [{ id: 1, task: "wash clothes", completed: false }, {
-        id: 2, task: "walk dog", completed: false
+    const initialTodos = [{ id: 1, task: "wash clothes", completed: true }, {
+        id: 2, task: "walk dog", completed: true
     }]
     const [todos, setTodos] = useState(initialTodos);
     const addTodos = (newTodoText) => {
@@ -25,14 +25,18 @@ function TodoApp() {
             height: "100vh",
             backgroundColor: "#fafafa"
         }}>
+
             <AppBar color="primary" position="static" style={{ height: "64px" }}>
                 <Toolbar>
                     <Typography color="inherit">Todos with hooks</Typography>
                 </Toolbar>
             </AppBar>
-            <TodoForm addTodos={addTodos} />
-            <TodoList todos={todos} />
-
+            <Grid container justifyContent="center" style={{ marginTop: "1rem" }}>
+                <Grid item xs={12} md={8} lg={4}>
+                    <TodoForm addTodos={addTodos} />
+                    <TodoList todos={todos} />
+                </Grid>
+            </Grid>
         </Paper>
 
     </div>)
