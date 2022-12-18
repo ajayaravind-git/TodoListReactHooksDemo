@@ -31,6 +31,16 @@ function TodoApp() {
             }
         }))
     }
+    const todoEditing = (id, newTask) => {
+        setTodos(todos.map(td => {
+            if (td.id === id) {
+                return { ...td, task: newTask }
+            } else {
+                return td
+            }
+        }))
+    }
+
     return (<div>
         <Paper style={{
             padding: 0,
@@ -47,7 +57,7 @@ function TodoApp() {
             <Grid container justifyContent="center" style={{ marginTop: "1rem" }}>
                 <Grid item xs={12} md={8} lg={4}>
                     <TodoForm addTodos={addTodos} />
-                    <TodoList Completed={Completed} removeTodos={removeTodos} todos={todos} />
+                    <TodoList Completed={Completed} removeTodos={removeTodos} todos={todos} todoEditing={todoEditing} />
                 </Grid>
             </Grid>
         </Paper>
