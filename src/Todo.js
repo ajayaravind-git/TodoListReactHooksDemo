@@ -10,7 +10,7 @@ function Todo({ completed, task, removeTodos, id, Completed, todoEditing }) {
 
     return (<> {!Editing ?
         < ListItem > <Checkbox checked={completed ? true : false} onClick={() => { Completed(id); }} />
-            <ListItemText onClick={() => { Completed(id); }} style={{ textDecoration: completed ? "line-through" : "", cursor: "pointer" }}>
+            <ListItemText onClick={() => { Completed(id); }} style={{ textDecoration: completed ? "line-through" : "", cursor: "pointer", color: completed ? "black" : "slateblue" }}>
                 {task}
             </ListItemText>
             <ListItemSecondaryAction>
