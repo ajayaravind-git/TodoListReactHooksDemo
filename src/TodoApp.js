@@ -8,12 +8,12 @@ import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import TodoList from "./TodoList"
 import TodoForm from "./TodoForm"
-import { v4 as uuidv4 } from 'uuid';
+import useTodoState from './hooks/useTodoState';
 
 function TodoApp() {
     const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || []
 
-    const [todos, setTodos] = useState(initialTodos);
+    const { todos, addTodos, removeTodos, Completed, todoEditing } = useTodoState(initialTodos)
 
     useEffect(() => {
         window.localStorage.setItem("todos", JSON.stringify(todos));
@@ -22,31 +22,6 @@ function TodoApp() {
 
 
 
-    const addTodos = (newTodoText) => {
-        setTodos([...todos, { id: uuidv4(), task: newTodoText, completed: false }])
-
-    }
-    const removeTodos = (id) => {
-        setTodos(todos.filter(td => id != td.id))
-    }
-    const Completed = (id) => {
-        setTodos(todos.map(td => {
-            if (td.id === id) {
-                return { ...td, completed: !td.completed }
-            } else {
-                return td
-            }
-        }))
-    }
-    const todoEditing = (id, newTask) => {
-        setTodos(todos.map(td => {
-            if (td.id === id) {
-                return { ...td, task: newTask }
-            } else {
-                return td
-            }
-        }))
-    }
 
     return (<div>
         <Paper style={{
