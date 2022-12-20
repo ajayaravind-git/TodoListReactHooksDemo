@@ -11,13 +11,9 @@ import TodoForm from "./TodoForm"
 import useTodoState from './hooks/useTodoState';
 
 function TodoApp() {
-    const initialTodos = JSON.parse(window.localStorage.getItem("todos")) || []
+    const initialTodos = []
 
     const { todos, addTodos, removeTodos, Completed, todoEditing } = useTodoState(initialTodos)
-
-    useEffect(() => {
-        window.localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos])
 
 
 
