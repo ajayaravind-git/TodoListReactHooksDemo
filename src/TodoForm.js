@@ -4,17 +4,18 @@ import useInputState from './hooks/useInputState'
 import { TodosContext } from './contexts/todosContext';
 function TodoForm() {
     const [newTodo, setTodo, resetTodo] = useInputState('')
-    const { addTodos } = useContext(TodosContext)
+    const { dispatch } = useContext(TodosContext)
+
     return (<Paper>
         <form onSubmit={(e) => {
             e.preventDefault();
-            addTodos(newTodo);
+            dispatch({ type: "ADD", task: newTodo });
             resetTodo();
         }} >
             <Input placeholder='Enter New Todo' value={newTodo} onChange={setTodo} />
             <Button onClick={e => {
                 e.preventDefault();
-                addTodos(newTodo);
+                dispatch({ type: 'ADD', task: newTodo });
                 resetTodo();
             }}>Add Todo</Button>
         </form></Paper>)

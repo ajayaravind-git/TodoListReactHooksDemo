@@ -6,10 +6,10 @@ import useInputState from './hooks/useInputState'
 
 function TodoEditForm({ toggleEditing, id, task }) {
     const [editTodo, setEditTodo, ResetEditTodo] = useInputState(task)
-    const { todoEditing } = useContext(TodosContext)
+    const { dispatch } = useContext(TodosContext)
     return (<form onSubmit={(e) => {
         e.preventDefault();
-        todoEditing(id, editTodo);
+        dispatch({ type: "EDIT", id: id, newTask: editTodo });
         toggleEditing();
 
 
@@ -22,7 +22,7 @@ function TodoEditForm({ toggleEditing, id, task }) {
             <ListItemSecondaryAction>
                 <Button onClick={() => { toggleEditing(); }}>x</Button>
                 <Button onClick={() => {
-                    todoEditing(id, editTodo);
+                    dispatch({ type: "EDIT", id: id, newTask: editTodo })
                     toggleEditing();
 
                 }}>Save</Button>
