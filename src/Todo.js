@@ -4,8 +4,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import useToggleHook from "./hooks/useToggleHook";
 import TodoEditForm from "./TodoEditForm"
+import { useContext } from "react";
+import { TodosContext } from "./contexts/todosContext";
 
-function Todo({ completed, task, removeTodos, id, Completed, todoEditing }) {
+function Todo({ completed, task, id }) {
+    const { removeTodos, Completed } = useContext(TodosContext)
     const [Editing, toggleEditing] = useToggleHook(false);
 
     return (<> {!Editing ?
@@ -18,7 +21,7 @@ function Todo({ completed, task, removeTodos, id, Completed, todoEditing }) {
                 <IconButton aria-label="Edit" onClick={() => { toggleEditing() }}><EditIcon /></IconButton>
                 <IconButton aria-label="Delete" onClick={() => { removeTodos(id) }}><DeleteIcon /></IconButton>
             </ListItemText>
-        </ListItem > : <TodoEditForm id={id} task={task} toggleEditing={toggleEditing} todoEditing={todoEditing} />}</>)
+        </ListItem > : <TodoEditForm id={id} task={task} toggleEditing={toggleEditing} />}</>)
 }
 
 export default Todo;

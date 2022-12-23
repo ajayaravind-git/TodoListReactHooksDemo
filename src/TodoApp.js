@@ -9,13 +9,9 @@ import Typography from '@mui/material/Typography';
 import TodoList from "./TodoList"
 import TodoForm from "./TodoForm"
 import useTodoState from './hooks/useTodoState';
-
+import TaskAltIcon from '@mui/icons-material/TaskAlt';
+import { TodosProvider } from './contexts/todosContext';
 function TodoApp() {
-    const initialTodos = []
-
-    const { todos, addTodos, removeTodos, Completed, todoEditing } = useTodoState(initialTodos)
-
-
 
 
 
@@ -29,13 +25,16 @@ function TodoApp() {
 
             <AppBar color="primary" position="static" style={{ height: "64px" }}>
                 <Toolbar>
+                    <TaskAltIcon style={{ padding: "10px" }} />
                     <Typography color="inherit">Todos with hooks</Typography>
                 </Toolbar>
             </AppBar>
             <Grid container justifyContent="center" style={{ marginTop: "1rem" }}>
                 <Grid item xs={12} md={8} lg={4}>
-                    <TodoForm addTodos={addTodos} />
-                    <TodoList Completed={Completed} removeTodos={removeTodos} todos={todos} todoEditing={todoEditing} />
+                    <TodosProvider>
+                        <TodoForm />
+                        <TodoList />
+                    </TodosProvider>
                 </Grid>
             </Grid>
         </Paper>
