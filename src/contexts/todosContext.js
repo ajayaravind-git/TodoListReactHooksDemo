@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer } from "react"; //context file with reducer
 import useTodoState from "../hooks/useTodoState";
 import reducer from "../reducers/todoReducer";
 export const TodosContext = createContext();
