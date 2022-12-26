@@ -4,10 +4,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import useToggleHook from "./hooks/useToggleHook";
 import TodoEditForm from "./TodoEditForm"
-import { useContext } from "react";
+import { useContext, memo } from "react";
 import { DispatchContext } from "./contexts/todosContext";
 
 function Todo({ completed, task, id }) {
+    console.log(task)
     const dispatch = useContext(DispatchContext)
     const [Editing, toggleEditing] = useToggleHook(false);
 
@@ -24,4 +25,4 @@ function Todo({ completed, task, id }) {
         </ListItem > : <TodoEditForm id={id} task={task} toggleEditing={toggleEditing} />}</>)
 }
 
-export default Todo;
+export default memo(Todo);
