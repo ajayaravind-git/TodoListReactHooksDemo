@@ -8,7 +8,7 @@ import { TodosContext } from "./contexts/todosContext"
 import Todo from './Todo'
 
 function Todolist(props) {
-    const { todos } = useContext(TodosContext)
+    const todos = useContext(TodosContext)
 
     return (<Paper><List>
         {todos.map(td =>

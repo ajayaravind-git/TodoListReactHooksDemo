@@ -8,7 +8,7 @@ import { useContext } from "react";
 import { DispatchContext } from "./contexts/todosContext";
 
 function Todo({ completed, task, id }) {
-    const { dispatch } = useContext(DispatchContext)
+    const dispatch = useContext(DispatchContext)
     const [Editing, toggleEditing] = useToggleHook(false);
 
     return (<> {!Editing ?

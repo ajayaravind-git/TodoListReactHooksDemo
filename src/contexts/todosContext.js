@@ -10,10 +10,10 @@ export function TodosProvider(props) {
 
     const [todos, dispatch] = useReducer(reducer, initialTodos)
 
-    return <TodosContext.Provider value={{ todos }}>
-        <DispatchContext.Provider value={{ dispatch }}>  {/*context passed in seperately as objects but still rerendering problem occcurs because a new object is created everytime the dispatch function is used.*/}
-            {props.children}                              {/*to solve this issue pass it normally and not as an object.*/}
-        </DispatchContext.Provider>    {/*Rerender prevention done on branch SplittingContextRerenderSolved //Also change the way it is aquired in other files, because its not an object that we import.*/}
+    return <TodosContext.Provider value={todos}>    {/*Rerender prevention by passing the todos instead of  todos object*/}
+        <DispatchContext.Provider value={dispatch}>   {/*Rerender prevention by passing the dispatch instead of  todos object*/}
+            {props.children}                             {/*This prevents the creation on new object everytime dispatch is called thus preventing rerender*/}
+        </DispatchContext.Provider>                        {/*Also change the way the value is obtained */}
     </TodosContext.Provider>
 
 }

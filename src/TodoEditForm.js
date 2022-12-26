@@ -6,7 +6,7 @@ import useInputState from './hooks/useInputState'
 
 function TodoEditForm({ toggleEditing, id, task }) {
     const [editTodo, setEditTodo, ResetEditTodo] = useInputState(task)
-    const { dispatch } = useContext(DispatchContext)
+    const dispatch = useContext(DispatchContext)
     return (<form onSubmit={(e) => {
         e.preventDefault();
         dispatch({ type: "EDIT", id: id, newTask: editTodo });
