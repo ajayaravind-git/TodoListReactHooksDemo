@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Paper, Input, Button } from '@mui/material';
 import useInputState from './hooks/useInputState'
-import { TodosContext } from './contexts/todosContext';
+import { DispatchContext } from './contexts/todosContext';
 function TodoForm() {
     const [newTodo, setTodo, resetTodo] = useInputState('')
-    const { dispatch } = useContext(TodosContext)
+    const { dispatch } = useContext(DispatchContext)
 
     return (<Paper>
         <form onSubmit={(e) => {

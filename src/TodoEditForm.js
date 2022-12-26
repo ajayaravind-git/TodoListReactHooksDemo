@@ -1,12 +1,12 @@
 import { Input, Button, ListItem, ListItemText, ListItemSecondaryAction } from '@mui/material';
 import { useContext } from 'react';
-import { TodosContext } from './contexts/todosContext';
+import { DispatchContext } from './contexts/todosContext';
 import useInputState from './hooks/useInputState'
 
 
 function TodoEditForm({ toggleEditing, id, task }) {
     const [editTodo, setEditTodo, ResetEditTodo] = useInputState(task)
-    const { dispatch } = useContext(TodosContext)
+    const { dispatch } = useContext(DispatchContext)
     return (<form onSubmit={(e) => {
         e.preventDefault();
         dispatch({ type: "EDIT", id: id, newTask: editTodo });

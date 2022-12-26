@@ -5,10 +5,10 @@ import EditIcon from '@mui/icons-material/Edit';
 import useToggleHook from "./hooks/useToggleHook";
 import TodoEditForm from "./TodoEditForm"
 import { useContext } from "react";
-import { TodosContext } from "./contexts/todosContext";
+import { DispatchContext } from "./contexts/todosContext";
 
 function Todo({ completed, task, id }) {
-    const { dispatch } = useContext(TodosContext)
+    const { dispatch } = useContext(DispatchContext)
     const [Editing, toggleEditing] = useToggleHook(false);
 
     return (<> {!Editing ?
